@@ -1,0 +1,42 @@
+{
+  "name": "melihovv/base64-image-decoder",
+  "description": "A base64 image decoder",
+  "license": "MIT",
+  "keywords": [
+    "base64",
+    "image",
+    "decoder"
+  ],
+  "type": "library",
+  "authors": [
+    {
+      "name": "Alexander Melihov",
+      "email": "amelihovv@ya.ru"
+    }
+  ],
+  "require": {
+    "php": ">=7.0"
+  },
+  "require-dev": {
+    "ext-gd": "*",
+    "phpunit/phpunit": "~6.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Melihovv\\Base64ImageDecoder\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Melihovv\\Base64ImageDecoder\\Tests\\": "tests"
+    }
+  },
+  "scripts": {
+    "phpunit": "phpunit"
+  },
+  "config": {
+    "preferred-install": "dist",
+    "sort-packages": true,
+    "optimize-autoloader": true
+  }
+}
