@@ -1,9 +1,9 @@
 # Base64 Image Decoder
 
 [![Build Status](https://travis-ci.org/melihovv/base64-image-decoder.svg?branch=master)](https://travis-ci.org/melihovv/base64-image-decoder)
-[![styleci](https://styleci.io/repos/CHANGEME/shield)](https://styleci.io/repos/CHANGEME)
+[![styleci](https://styleci.io/repos/121083762/shield)](https://styleci.io/repos/121083762)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/melihovv/base64-image-decoder/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/melihovv/base64-image-decoder/?branch=master)
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/CHANGEME/mini.png)](https://insight.sensiolabs.com/projects/CHANGEME)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/1ba39d70-b4f8-4e78-9f65-dfba75f30cf5/mini.png)](https://insight.sensiolabs.com/projects/1ba39d70-b4f8-4e78-9f65-dfba75f30cf5)
 [![Coverage Status](https://coveralls.io/repos/github/melihovv/base64-image-decoder/badge.svg?branch=master)](https://coveralls.io/github/melihovv/base64-image-decoder?branch=master)
 
 [![Packagist](https://img.shields.io/packagist/v/melihovv/base64-image-decoder.svg)](https://packagist.org/packages/melihovv/base64-image-decoder)
