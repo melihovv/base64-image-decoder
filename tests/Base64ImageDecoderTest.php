@@ -2,8 +2,8 @@
 
 namespace Melihovv\Base64ImageDecoder\Tests;
 
-use Melihovv\Base64ImageDecoder\Base64ImageDecoder;
 use PHPUnit\Framework\TestCase;
+use Melihovv\Base64ImageDecoder\Base64ImageDecoder;
 
 class Base64ImageDecoderTest extends TestCase
 {
@@ -46,6 +46,6 @@ class Base64ImageDecoderTest extends TestCase
 
         $rawImage = ob_get_clean();
 
-        return ['data:image/png;base64,' . base64_encode($rawImage), $rawImage];
+        return ['data:image/png;base64,'.base64_encode($rawImage), $rawImage];
     }
 }
