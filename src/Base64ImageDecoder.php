@@ -38,14 +38,14 @@ class Base64ImageDecoder
     private function validate()
     {
         $parts = explode(',', $this->base64EncodedImage);
-        $this->format = str_replace(['data:image/', ';', 'base64'], ['', '', '',], $parts[0] ?? '');
+        $this->format = str_replace(['data:image/', ';', 'base64'], ['', '', ''], $parts[0] ?? '');
         $this->content = $parts[1] ?? '';
 
-        if (!preg_match('%^[a-zA-Z0-9/+]*={0,2}$%', $this->content)) {
+        if (! preg_match('%^[a-zA-Z0-9/+]*={0,2}$%', $this->content)) {
             throw NotBase64Encoding::create();
         }
 
-        if (!in_array($this->format, $this->allowedFormats, true)) {
+        if (! in_array($this->format, $this->allowedFormats, true)) {
             throw InvalidFormat::create($this->allowedFormats, $this->format);
         }
     }
