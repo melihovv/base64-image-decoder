@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Melihovv\Base64ImageDecoder\Exceptions;
 
 class InvalidFormat extends DecodingFailedException
