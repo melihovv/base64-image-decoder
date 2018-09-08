@@ -2,12 +2,11 @@
 
 namespace Melihovv\Base64ImageDecoder\Tests;
 
-use Melihovv\Base64ImageDecoder\Base64ImageEncoder;
 use PHPUnit\Framework\TestCase;
+use Melihovv\Base64ImageDecoder\Base64ImageEncoder;
 
 class Base64ImageEncoderTest extends TestCase
 {
-
     /**
      * @test
      */
@@ -15,15 +14,15 @@ class Base64ImageEncoderTest extends TestCase
     {
         $fileName = $this->generateTmpPngImage();
 
-        if (0 === filesize($fileName) || !is_readable($fileName)) {
-            throw new \RuntimeException("Failed reading tmp file.");
+        if (0 === filesize($fileName) || ! is_readable($fileName)) {
+            throw new \RuntimeException('Failed reading tmp file.');
         }
 
         $content = file_get_contents($fileName);
         $encoder = Base64ImageEncoder::fromFileName($fileName);
         $this->assertEquals(base64_encode($content), $encoder->getContent());
         $this->assertEquals('image/png', $encoder->getMimeType());
-        $this->assertEquals('data:image/png;base64,' . base64_encode($content), $encoder->getDataUri());
+        $this->assertEquals('data:image/png;base64,'.base64_encode($content), $encoder->getDataUri());
     }
 
     /**
@@ -33,15 +32,15 @@ class Base64ImageEncoderTest extends TestCase
     {
         $fileName = $this->generateTmpPngImage();
 
-        if (0 === filesize($fileName) || !is_readable($fileName)) {
-            throw new \RuntimeException("Failed reading tmp file.");
+        if (0 === filesize($fileName) || ! is_readable($fileName)) {
+            throw new \RuntimeException('Failed reading tmp file.');
         }
 
         $content = file_get_contents($fileName);
         $encoder = Base64ImageEncoder::fromBinaryData($content);
         $this->assertEquals(base64_encode($content), $encoder->getContent());
         $this->assertEquals('image/png', $encoder->getMimeType());
-        $this->assertEquals('data:image/png;base64,' . base64_encode($content), $encoder->getDataUri());
+        $this->assertEquals('data:image/png;base64,'.base64_encode($content), $encoder->getDataUri());
     }
 
     /**
@@ -51,8 +50,8 @@ class Base64ImageEncoderTest extends TestCase
     {
         $fileName = $this->generateTmpPngImage();
 
-        if (0 === filesize($fileName) || !is_readable($fileName)) {
-            throw new \RuntimeException("Failed reading tmp file.");
+        if (0 === filesize($fileName) || ! is_readable($fileName)) {
+            throw new \RuntimeException('Failed reading tmp file.');
         }
 
         $handle = fopen($fileName, 'r');
@@ -60,7 +59,7 @@ class Base64ImageEncoderTest extends TestCase
         $expectedContent = Base64ImageEncoder::fromFileName($fileName)->getContent();
         $this->assertEquals($expectedContent, $encoder->getContent());
         $this->assertEquals('image/png', $encoder->getMimeType());
-        $this->assertEquals('data:image/png;base64,' . $expectedContent, $encoder->getDataUri());
+        $this->assertEquals('data:image/png;base64,'.$expectedContent, $encoder->getDataUri());
     }
 
     /**
@@ -71,8 +70,8 @@ class Base64ImageEncoderTest extends TestCase
     {
         $fileName = $this->generateTmpPngImage();
 
-        if (0 === filesize($fileName) || !is_readable($fileName)) {
-            throw new \RuntimeException("Failed reading tmp file.");
+        if (0 === filesize($fileName) || ! is_readable($fileName)) {
+            throw new \RuntimeException('Failed reading tmp file.');
         }
         Base64ImageEncoder::fromFileName($fileName, ['jpeg']);
     }
@@ -81,13 +80,12 @@ class Base64ImageEncoderTest extends TestCase
     {
         $fileName = tempnam(sys_get_temp_dir(), 'b64');
 
-        if (!is_writable($fileName)) {
-            throw new \RuntimeException("Failed writing in tmp file.");
+        if (! is_writable($fileName)) {
+            throw new \RuntimeException('Failed writing in tmp file.');
         }
 
         imagepng(imagecreatetruecolor($width, $height), $fileName);
 
         return $fileName;
     }
-
 }
