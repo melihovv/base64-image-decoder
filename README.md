@@ -10,8 +10,7 @@
 [![Packagist](https://poser.pugx.org/melihovv/base64-image-decoder/d/total.svg)](https://packagist.org/packages/melihovv/base64-image-decoder)
 [![Packagist](https://img.shields.io/packagist/l/melihovv/base64-image-decoder.svg)](https://packagist.org/packages/melihovv/base64-image-decoder)
 
-Small class to easily decode base64 encoded image.
-Useful when you need to upload image via ajax.
+A small set of classes (decoder, encoder) to work with images as data-uris.
 
 ## Installation
 
@@ -22,16 +21,34 @@ composer require melihovv/base64-image-decoder
 
 ## Usage
 
+### Decoder
+
 ```php
-$base64EncodedImage = ; // image may come from http request or any other source.
+use Melihovv\Base64ImageDecoder\Base64ImageDecoder;
+
+$dataUri = 'data:image/gif;base64,R0lGODlhLAH6AOZ/AMyokXJMK0uE...'; // image may come from http request or any other source.
 
 // We check that image is encoded properly in constructor, otherwise exception will be thrown.
 // You can use this info in your validation rule.
-$decoder = new Base64ImageDecoder($base64EncodedImage, $allowedFormats = ['jpeg', 'png', 'gif']);
+$decoder = new Base64ImageDecoder($dataUri, $allowedFormats = ['jpeg', 'png', 'gif']);
 
 $decoder->getFormat(); // 'png', or 'jpeg', or 'gif', or etc.
 $decoder->getDecodedContent(); // base64 decoded raw image bytes.
 $decoder->getContent(); // base64 encoded raw image bytes.
+```
+
+### Encoder
+
+```php
+use Melihovv\Base64ImageDecoder\Base64ImageEncoder;
+
+$encoder = Base64ImageEncoder::fromFileName('/path/to/picture.jpg', $allowedFormats = ['jpeg', 'png', 'gif']);
+#$encoder = Base64ImageEncoder::fromBinaryData($someRawBinaryData, $allowedFormats = ['jpeg', 'png', 'gif']);
+#$encoder = Base64ImageEncoder::fromResource($someResource, $allowedFormats = ['jpeg', 'png', 'gif']);
+
+$encoder->getMimeType(); // image/jpeg for instance
+$encoder->getContent(); // base64 encoded image bytes.
+$encoder->getDataUri(); // a base64 data-uri to use in HTML or CSS attributes.
 ```
 
 ## Security

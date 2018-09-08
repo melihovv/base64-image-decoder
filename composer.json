@@ -15,7 +15,8 @@
     }
   ],
   "require": {
-    "php": ">=7.0"
+    "php": ">=7.0",
+    "ext-fileinfo": "*"
   },
   "require-dev": {
     "ext-gd": "*",
