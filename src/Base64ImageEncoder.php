@@ -4,9 +4,9 @@ namespace Melihovv\Base64ImageDecoder;
 
 use finfo;
 use InvalidArgumentException;
-use Melihovv\Base64ImageDecoder\Exceptions\CannotEncodeToBase64;
-use Melihovv\Base64ImageDecoder\Exceptions\CannotReadFile;
 use Melihovv\Base64ImageDecoder\Exceptions\InvalidFormat;
+use Melihovv\Base64ImageDecoder\Exceptions\CannotReadFile;
+use Melihovv\Base64ImageDecoder\Exceptions\CannotEncodeToBase64;
 
 class Base64ImageEncoder
 {
