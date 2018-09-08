@@ -7,9 +7,7 @@ use Melihovv\Base64ImageDecoder\Base64ImageEncoder;
 
 class Base64ImageEncoderTest extends TestCase
 {
-    /**
-     * @test
-     */
+    /** @test */
     public function it_encodes_a_file_to_base64()
     {
         $fileName = $this->generateTmpPngImage();
@@ -25,9 +23,7 @@ class Base64ImageEncoderTest extends TestCase
         $this->assertEquals('data:image/png;base64,'.base64_encode($content), $encoder->getDataUri());
     }
 
-    /**
-     * @test
-     */
+    /** @test */
     public function it_encodes_content_to_base64()
     {
         $fileName = $this->generateTmpPngImage();
@@ -43,9 +39,7 @@ class Base64ImageEncoderTest extends TestCase
         $this->assertEquals('data:image/png;base64,'.base64_encode($content), $encoder->getDataUri());
     }
 
-    /**
-     * @test
-     */
+    /** @test */
     public function it_encodes_a_resource_to_base64()
     {
         $fileName = $this->generateTmpPngImage();
@@ -76,7 +70,7 @@ class Base64ImageEncoderTest extends TestCase
         Base64ImageEncoder::fromFileName($fileName, ['jpeg']);
     }
 
-    public function generateTmpPngImage($width = 10, $height = 10) : string
+    public function generateTmpPngImage(int $width = 10, int $height = 10) : string
     {
         $fileName = tempnam(sys_get_temp_dir(), 'b64');
 

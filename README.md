@@ -21,6 +21,20 @@ composer require melihovv/base64-image-decoder
 
 ## Usage
 
+### Encoder
+
+```php
+use Melihovv\Base64ImageDecoder\Base64ImageEncoder;
+
+$encoder = Base64ImageEncoder::fromFileName('/path/to/picture.jpg', $allowedFormats = ['jpeg', 'png', 'gif']);
+#$encoder = Base64ImageEncoder::fromBinaryData($someRawBinaryData, $allowedFormats = ['jpeg', 'png', 'gif']);
+#$encoder = Base64ImageEncoder::fromResource($someResource, $allowedFormats = ['jpeg', 'png', 'gif']);
+
+$encoder->getMimeType(); // image/jpeg for instance
+$encoder->getContent(); // base64 encoded image bytes.
+$encoder->getDataUri(); // a base64 data-uri to use in HTML or CSS attributes.
+```
+
 ### Decoder
 
 ```php
@@ -35,20 +49,6 @@ $decoder = new Base64ImageDecoder($dataUri, $allowedFormats = ['jpeg', 'png', 'g
 $decoder->getFormat(); // 'png', or 'jpeg', or 'gif', or etc.
 $decoder->getDecodedContent(); // base64 decoded raw image bytes.
 $decoder->getContent(); // base64 encoded raw image bytes.
-```
-
-### Encoder
-
-```php
-use Melihovv\Base64ImageDecoder\Base64ImageEncoder;
-
-$encoder = Base64ImageEncoder::fromFileName('/path/to/picture.jpg', $allowedFormats = ['jpeg', 'png', 'gif']);
-#$encoder = Base64ImageEncoder::fromBinaryData($someRawBinaryData, $allowedFormats = ['jpeg', 'png', 'gif']);
-#$encoder = Base64ImageEncoder::fromResource($someResource, $allowedFormats = ['jpeg', 'png', 'gif']);
-
-$encoder->getMimeType(); // image/jpeg for instance
-$encoder->getContent(); // base64 encoded image bytes.
-$encoder->getDataUri(); // a base64 data-uri to use in HTML or CSS attributes.
 ```
 
 ## Security

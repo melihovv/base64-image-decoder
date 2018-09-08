@@ -4,6 +4,6 @@ namespace Melihovv\Base64ImageDecoder\Exceptions;
 
 use RuntimeException;
 
-abstract class DecodingFailedException extends RuntimeException
+abstract class CodingFailedException extends RuntimeException
 {
 }
