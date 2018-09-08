@@ -6,7 +6,6 @@ use Melihovv\Base64ImageDecoder\Exceptions\InvalidFormat;
 
 class Base64ImageEncoder
 {
-
     const DEFAULT_ALLOWED_FORMATS = [
         'jpeg',
         'png',
@@ -32,7 +31,7 @@ class Base64ImageEncoder
     private static function validate(string $mimeType, array $allowedFormats)
     {
         $format = strtr($mimeType, ['image/' => '']);
-        if (!in_array($format, $allowedFormats, true)) {
+        if (! in_array($format, $allowedFormats, true)) {
             throw InvalidFormat::create($allowedFormats, $format);
         }
     }
@@ -43,6 +42,7 @@ class Base64ImageEncoder
         if (false === $encoded) {
             throw new \RuntimeException('Failed encoding in base 64.');
         }
+
         return $encoded;
     }
 
@@ -51,16 +51,18 @@ class Base64ImageEncoder
         $finfo = new \finfo(FILEINFO_MIME_TYPE);
         $mimeType = $finfo->buffer($binaryData);
         self::validate($mimeType, $allowedFormats);
+
         return new static($mimeType, self::encode($binaryData));
     }
 
     public static function fromFileName(string $fileName, array $allowedFormats = self::DEFAULT_ALLOWED_FORMATS): self
     {
-        if (!is_readable($fileName)) {
+        if (! is_readable($fileName)) {
             throw new \InvalidArgumentException(sprintf('Unable to read file %s', $fileName));
         }
         $mimeType = mime_content_type($fileName);
         self::validate($mimeType, $allowedFormats);
+
         return new static($mimeType, self::encode(file_get_contents($fileName)));
     }
 
@@ -72,9 +74,10 @@ class Base64ImageEncoder
      */
     public static function fromResource($handle, array $allowedFormats = self::DEFAULT_ALLOWED_FORMATS): self
     {
-        if (!is_resource($handle)) {
+        if (! is_resource($handle)) {
             throw new \InvalidArgumentException(sprintf('Expected resource, got %s', is_object($handle) ? get_class($handle) : gettype($handle)));
         }
+
         return self::fromBinaryData(stream_get_contents($handle), $allowedFormats);
     }
 
@@ -93,6 +96,6 @@ class Base64ImageEncoder
 
     public function getDataUri(): string
     {
-        return 'data:' . $this->mimeType . ';base64,' . $this->base64;
+        return 'data:'.$this->mimeType.';base64,'.$this->base64;
     }
 }
